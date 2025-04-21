@@ -10,6 +10,5 @@ export default function Home() {
     console.log(params)
   }, [])
 
-  return <GameDetailScreen id="c7542a21-3513-44dd-ac73-2d712df321ea" />
-  // return <GameDetailScreen id={params!.id as string} />
+  return <GameDetailScreen id={params!.id as string} />
 }

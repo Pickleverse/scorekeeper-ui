@@ -9,25 +9,25 @@ const GameCreator = ({ Games, id }: { Games: GameState; id: string }) => {
   const [page, setPage] = useState(0)
   const [singles, setSingles] = useState(false)
   const [teamAName, setTeamAName] = useState(Games.games[id].teamA.name)
-  const [p1A, setP1A] = useState(Games.games[id].teamA.playerA.name)
-  const [p2A, setP2A] = useState(Games.games[id].teamA.playerB?.name)
+  const [p1A, setP1A] = useState(Games.games[id].teamA.playerA)
+  const [p2A, setP2A] = useState(Games.games[id].teamA.playerB)
   // team B
   const [teamBName, setTeamBName] = useState(Games.games[id].teamB.name)
-  const [p1B, setP1B] = useState(Games.games[id].teamB.playerA.name)
-  const [p2B, setP2B] = useState(Games.games[id].teamB.playerB?.name)
+  const [p1B, setP1B] = useState(Games.games[id].teamB.playerA)
+  const [p2B, setP2B] = useState(Games.games[id].teamB.playerB)
 
   const startGame = () => {
     console.debug('Starting game')
     let currentGame = { ...Games.games[id] }
     currentGame.teamA.name = teamAName
     currentGame.teamB.name = teamBName
-    currentGame.teamA.playerA.name = p1A
-    currentGame.teamB.playerA.name = p1B
+    currentGame.teamA.playerA = p1A
+    currentGame.teamB.playerA = p1B
     if (!singles) {
       currentGame.teamA.playerB = createPlayer(true)
       currentGame.teamB.playerB = createPlayer(true)
-      currentGame.teamA.playerB!.name! = p2A!
-      currentGame.teamB.playerB!.name! = p2B!
+      currentGame.teamA.playerB! = p2A!
+      currentGame.teamB.playerB! = p2B!
     }
     Games.startGame(currentGame)
     router.replace(`/game/${currentGame.id}`)

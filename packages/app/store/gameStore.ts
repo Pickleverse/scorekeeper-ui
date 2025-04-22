@@ -11,15 +11,16 @@ type Game = {
   id: string
   teamA: {
     name?: string
-    playerA: { name: string; points?: number }
-    playerB?: { name: string; points?: number }
+    score: number
+    playerA: string
+    playerB?: string
   }
   teamB: {
     name?: string
-    playerA: { name: string; points?: number }
-    playerB?: { name: string; points?: number }
+    score: number
+    playerA: string
+    playerB?: string
   }
-  score: number
   createdAt: Date
   status: 'NEW' | 'ACTIVE' | 'COMPLETE'
 }
@@ -39,32 +40,33 @@ export const useGames = create<GameState>((set, get) => ({
       return state
     }),
   getGame: (id: string) => get().games[id],
+  incScore: (id: string, isTeamB?: boolean) =>
+    set((state) => {
+      if (isTeamB) {
+        state.games[id].teamB.score++
+      } else {
+        state.games[id].teamA.score++
+      }
+      return state
+    }),
 }))
 
 const createGame = (id: string): Game => {
   return {
     id,
     teamA: {
-      playerA: {
-        name: 'Player A',
-        points: 0,
-      },
+      playerA: 'Player A',
+      score: 0,
     },
     teamB: {
-      playerA: {
-        name: 'Player A',
-        points: 0,
-      },
+      playerA: 'Player A',
+      score: 0,
     },
     createdAt: new Date(),
     status: 'NEW',
-    score: 0,
   }
 }
 
 export const createPlayer = (isPlayer2?: boolean) => {
-  return {
-    name: isPlayer2 ? 'Player B' : 'Player A',
-    points: 0,
-  }
+  return isPlayer2 ? 'Player B' : 'Player A'
 }

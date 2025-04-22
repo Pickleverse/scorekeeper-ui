@@ -1,9 +1,10 @@
 import { Button, Paragraph, YStack } from '@my/ui'
 import { ChevronLeft } from '@tamagui/lucide-icons'
-import { useGames } from 'app/store'
 import { format } from 'date-fns'
 import { useRouter } from 'solito/navigation'
+import ActiveGame from './components/game-active'
 import GameCreator from './components/game-creator'
+import { useGames } from 'app/store'
 
 export function GameDetailScreen({ id }: { id: string }) {
   const router = useRouter()
@@ -24,11 +25,7 @@ export function GameDetailScreen({ id }: { id: string }) {
 
           {game.status === 'NEW' && <GameCreator Games={Games} id={id} />}
 
-          {game.status === 'ACTIVE' && (
-            <Paragraph ta="center" mx="auto" fow="700" col="$blue10">
-              {format(game.createdAt, 'PP')}
-            </Paragraph>
-          )}
+          {game.status === 'ACTIVE' && <ActiveGame id={id} />}
 
           {game.status === 'COMPLETE' && (
             <Paragraph ta="center" mx="auto" fow="700" col="$blue10">

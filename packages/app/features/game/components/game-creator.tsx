@@ -2,8 +2,10 @@ import { Button, Checkbox, getTokenValue, Input, Label, View, YStack } from '@my
 import { ArrowLeft, ArrowRight, Check } from '@tamagui/lucide-icons'
 import { createPlayer, GameState } from 'app/store'
 import { Dispatch, SetStateAction, useState } from 'react'
+import { useRouter } from 'solito/navigation'
 
 const GameCreator = ({ Games, id }: { Games: GameState; id: string }) => {
+  const router = useRouter()
   const [page, setPage] = useState(0)
   const [singles, setSingles] = useState(false)
   const [teamAName, setTeamAName] = useState(Games.games[id].teamA.name)
@@ -28,6 +30,7 @@ const GameCreator = ({ Games, id }: { Games: GameState; id: string }) => {
       currentGame.teamB.playerB!.name! = p2B!
     }
     Games.startGame(currentGame)
+    router.replace(`/game/${currentGame.id}`)
   }
 
   return (

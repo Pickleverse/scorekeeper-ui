@@ -1,39 +1,41 @@
-import Image from "next/image";
+
 import Link from "next/link";
-   import React from 'react';
-export default function Home() {
+import VideoBanner from "./components/VideoBanner";
+
+
+const Home = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navbar */}
-      <nav className="fixed top-0 w-full bg-white shadow-md z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="fixed top-0 w-full bg-transparent z-50">
+        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
-              <a href="#" className="text-2xl font-bold text-blue-600">
+              <a href="#" className="text-2xl font-bold text-blue-600 text-3xl">
                 YourBrand
               </a>
             </div>
-            <div className="hidden md:flex space-x-8">
-              <a href="#home" className="text-gray-700 hover:text-blue-600 transition-colors">
+            <div className="hidden md:flex space-x-8 font-extrabold text-3xl">
+              <a href="#home" className="text-white hover:text-blue-600 transition-colors">
                 Home
               </a>
-              <a href="#features" className="text-gray-700 hover:text-blue-600 transition-colors">
+              <a href="#features" className="text-white hover:text-blue-600 transition-colors">
                 Features
               </a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors">
+              <a href="#about" className="text-white hover:text-blue-600 transition-colors">
                 About
               </a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">
+              <a href="#contact" className="text-white hover:text-blue-600 transition-colors">
                 Contact
               </a>
-            </div>
-            <div>
+                          <div>
               <Link
                 href="/login"
                 className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
               >
                 Login
               </Link>
+            </div>
             </div>
           </div>
         </div>
@@ -42,22 +44,10 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="mt-16 bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-20 px-4"
+        className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white relative"
       >
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Welcome to Your Solution
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-purple-100">
-            Transform your business with our innovative platform. Simple, powerful, and designed for success.
-          </p>
-          <a
-            href="#features"
-            className="inline-block bg-white text-purple-600 px-8 py-3 rounded-md font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all"
-          >
-            Learn More
-          </a>
-        </div>
+        <VideoBanner />
+
       </section>
 
       {/* Features Section */}
@@ -208,3 +198,6 @@ export default function Home() {
     </div>
   );
 }
+
+
+export default Home;

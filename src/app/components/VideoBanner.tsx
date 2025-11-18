@@ -16,7 +16,7 @@ const VideoBanner = () => {
           </p>
           <a
             href="#features"
-            className="inline-block bg-white text-purple-600 px-8 py-3 rounded-md font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all"
+            className="inline-block bg-white text-purple-600 text-2xl px-10 py-5 rounded-sm font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all"
           >
             Learn More
           </a>

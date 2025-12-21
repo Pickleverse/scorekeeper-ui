@@ -7,6 +7,7 @@ WORKDIR /app
 # Use package*.json to allow package-lock or npm-shrinkwrap if present
 COPY package*.json ./
 RUN npm ci --silent
+RUN npm install typescript
 
 # Copy source and build
 COPY . .

@@ -1,0 +1,36 @@
+app: scorepal-ui-svc
+sonar: true
+project: scorepal
+stack: nodejs
+
+docker:
+  credsId: scorepal-jcr-creds
+
+artifacts:
+  - '*archive.tar.gz'
+  - 'imageRef.properties'
+  - 'pipeline.properties'
+
+spinnaker_app: scorepal-ui-svc
+
+environments:
+  - name: feature/
+    deploy: true
+    spinnaker:
+      pipeline: "deploy-dev"
+      parameters:
+        # key: "value"
+
+  - name: develop
+    deploy: true
+    spinnaker:
+      pipeline: "deploy-dev"
+      parameters:
+        # key: "value"        
+
+  - name: master
+    deploy: true
+    spinnaker:
+      pipeline: "deploy-prod"
+      parameters:
+      # key: "value"

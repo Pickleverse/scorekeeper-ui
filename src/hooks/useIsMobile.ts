@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 /**
  * Viewport breakpoint size names
@@ -59,51 +59,50 @@ const getViewportSize = (width: number): ViewportSize => {
  * @returns ViewportInfo object with current viewport information
  */
 export const useViewport = (): ViewportInfo => {
-  const [viewport, setViewport] = useState<ViewportInfo>({
-    isMobile: false,
-    width: 0,
-    breakpoint: 'md',
-    isXS: false,
-    isSM: false,
-    isMD: false,
-    isLG: false,
-    isXL: false,
-    isXXL: false,
-  });
+  const [width, setWidth] = useState<number>(1024);
+  const [isHydrated, setIsHydrated] = useState<boolean>(false);
 
   useEffect(() => {
+    // Mark as hydrated
+    setIsHydrated(true);
+
     // Check if window is defined (client-side only)
     if (typeof window === 'undefined') return;
 
-    const updateViewport = () => {
-      const width = window.innerWidth;
-      const breakpoint = getViewportSize(width);
-      const isMobile = width <= BREAKPOINTS.sm; // Mobile is XS and SM
+    // Set initial width from window
+    setWidth(window.innerWidth);
 
-      setViewport({
-        isMobile,
-        width,
-        breakpoint,
-        isXS: breakpoint === 'xs',
-        isSM: breakpoint === 'sm',
-        isMD: breakpoint === 'md',
-        isLG: breakpoint === 'lg',
-        isXL: breakpoint === 'xl',
-        isXXL: breakpoint === 'xxl',
-      });
+    const handleResize = () => {
+      setWidth(window.innerWidth);
     };
 
-    // Set initial value
-    updateViewport();
-
     // Add listener for window resize
-    window.addEventListener('resize', updateViewport);
+    window.addEventListener('resize', handleResize);
 
     // Cleanup listener on unmount
     return () => {
-      window.removeEventListener('resize', updateViewport);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const viewport = useMemo(() => {
+    // Use default desktop breakpoint during SSR
+    const effectiveWidth = isHydrated ? width : 1024;
+    const breakpoint = getViewportSize(effectiveWidth);
+    const isMobile = effectiveWidth <= BREAKPOINTS.sm;
+
+    return {
+      isMobile,
+      width: effectiveWidth,
+      breakpoint,
+      isXS: breakpoint === 'xs',
+      isSM: breakpoint === 'sm',
+      isMD: breakpoint === 'md',
+      isLG: breakpoint === 'lg',
+      isXL: breakpoint === 'xl',
+      isXXL: breakpoint === 'xxl',
+    };
+  }, [width, isHydrated]);
 
   return viewport;
 };
@@ -113,6 +112,33 @@ export const useViewport = (): ViewportInfo => {
  * @returns boolean - true if viewport is XS or SM (mobile), false otherwise
  */
 export const useIsMobile = (): boolean => {
-  const { isMobile } = useViewport();
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isHydrated, setIsHydrated] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Mark as hydrated to prevent SSR mismatch
+    setIsHydrated(true);
+
+    if (typeof window === 'undefined') return;
+
+    // Set initial value
+    setIsMobile(window.innerWidth <= BREAKPOINTS.sm);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= BREAKPOINTS.sm);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // Return false during SSR to match initial render
+  if (!isHydrated) {
+    return false;
+  }
+
   return isMobile;
 };

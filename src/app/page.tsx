@@ -7,7 +7,6 @@ const Home = () => {
       {/* Hero Section */}
       {/* Features Section */}
       {/* <Features /> */}
-      Test
     </div>
   );
 }

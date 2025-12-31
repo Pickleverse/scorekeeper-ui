@@ -17,7 +17,7 @@ const MobileView = () => {
 export { MobileView };
 
     const styles = {
-        position: "relative top-0 z-50",
+        position: "relative top-0 z-50 sticky bg-white",
         contentAlignment: "flex justify-between items-center px-3 py-1",
         borders: "",
         brandFont: "text-3xl font-bold text-gray-700",

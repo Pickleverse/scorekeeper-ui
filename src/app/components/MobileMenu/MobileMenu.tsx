@@ -38,7 +38,7 @@ const MobileMenu = ({
     <div className={`relative ${className}`}>
         <button
           onClick={toggleMenu}
-          className={`text-gray-700 hover:text-gray-500 focus:outline-none transition-colors ${iconClassName}`}
+          className={`text-gray-700 ${iconClassName}`}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}
         >
@@ -49,11 +49,15 @@ const MobileMenu = ({
           )}
         </button>
       {/* Expandable Menu */}
-      {isOpen && (
+
         <div
-          className={`fixed right-0 top-11.5  bg-gray-900/95 backdrop-blur-sm shadow-lg ${menuClassName}`}
+              className={
+                  isOpen ?
+                      `fixed right-0 -bottom-50 transform-gpu translate-y ease-out duration-400 w-full h-full  bg-gray-900/50 backdrop-blur-sm shadow-lg ${menuClassName}`
+                      :
+                      `fixed right-0 -bottom-150 transform-gpu translate-y ease-out duration-400  w-full h-full  bg-gray-900/50 backdrop-blur-sm shadow-lg ${menuClassName}`}
         >
-          <nav className="flex flex-col space-y-1 p-4">
+          <nav className="flex flex-col space-y-1 p-4 items-center justify-center">
             {links.map((link, index) => (
               <Link
                 key={index}
@@ -66,7 +70,7 @@ const MobileMenu = ({
             ))}
           </nav>
         </div>
-      )}
+      
     </div>
   );
 };

@@ -1,78 +1,72 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { RxHamburgerMenu } from 'react-icons/rx';
-import { IoMdClose } from 'react-icons/io';
-import { type MobileMenuLink, MobileMenuProps } from './MobileMenu.d';
+import { useState } from 'react'
+import { RxHamburgerMenu } from 'react-icons/rx'
+import { IoMdClose } from 'react-icons/io'
+import { type MobileMenuLink, MobileMenuProps } from './MobileMenu.d'
 
-import Link from 'next/link';
+import Link from 'next/link'
 const defaultLinks: MobileMenuLink[] = [
-  { label: 'Home', href: '#home' },
-  { label: 'Features', href: '#features' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
-  { label: 'Login', href: '/login' },
-];
-
+    { label: 'Home', href: '#home' },
+    { label: 'Features', href: '#features' },
+    { label: 'About', href: '#about' },
+    { label: 'Contact', href: '#contact' },
+    { label: 'Login', href: '/login' },
+]
 
 const MobileMenu = ({
-  links = defaultLinks,
-  className = '',
-  iconClassName = '',
-  menuClassName = '',
+    links = defaultLinks,
+    className = '',
+    iconClassName = '',
 }: MobileMenuProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleLinkClick = (link: MobileMenuLink) => {
-    if (link.onClick) {
-      link.onClick();
+    const [isOpen, setIsOpen] = useState(false)
+    const toggleMenu = () => {
+        setIsOpen(!isOpen)
     }
-    setIsOpen(false);
-  };
+    const handleLinkClick = (link: MobileMenuLink) => {
+        if (link.onClick) {
+            link.onClick()
+        }
+        setIsOpen(false)
+    }
 
-  return (
-    <div className={`relative ${className}`}>
-        <button
-          onClick={toggleMenu}
-          className={`text-gray-700 ${iconClassName}`}
-          aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={isOpen}
-        >
-          {isOpen ? (
-            <IoMdClose className="text-3xl" />
-          ) : (
-            <RxHamburgerMenu className="text-3xl" />
-          )}
-        </button>
-      {/* Expandable Menu */}
-
-        <div
-              className={
-                  isOpen ?
-                      `fixed right-0 -bottom-50 transform-gpu translate-y ease-out duration-400 w-full h-full  bg-gray-900/50 backdrop-blur-sm shadow-lg ${menuClassName}`
-                      :
-                      `fixed right-0 -bottom-150 transform-gpu translate-y ease-out duration-400  w-full h-full  bg-gray-900/50 backdrop-blur-sm shadow-lg ${menuClassName}`}
-        >
-          <nav className="flex flex-col space-y-1 p-4 items-center justify-center">
-            {links.map((link, index) => (
-              <Link
-                key={index}
-                href={link.href}
-                onClick={() => handleLinkClick(link)}
-                className="block text-white hover:text-blue-400 hover:bg-gray-800 px-4 py-3 rounded-md text-lg font-medium transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+    return (
+        <div className={`relative ${className}`}>
+            <button
+                onClick={toggleMenu}
+                className={`text-gray-700 ${iconClassName}`}
+                aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isOpen}
+            >
+                {isOpen ? (
+                    <IoMdClose className="text-3xl" />
+                ) : (
+                    <RxHamburgerMenu className="text-3xl" />
+                )}
+            </button>
+            <div className={isOpen ? styles.openMenu : styles.closeMenu}>
+                <nav className={styles.menuContent}>
+                    {links.map((link, index) => (
+                        <Link
+                            key={index}
+                            href={link.href}
+                            onClick={() => handleLinkClick(link)}
+                            className={styles.menuLink}
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+                </nav>
+            </div>
         </div>
-      
-    </div>
-  );
-};
+    )
+}
 
-export { MobileMenu };
+export { MobileMenu }
+
+const styles = {
+    menuLink: `block text-white hover:text-blue-400 hover:bg-gray-800 px-4 py-3 rounded-md text-lg font-medium transition-colors`,
+    menuContent: `flex flex-col space-y-1 p-4 items-center justify-center`,
+    openMenu: `fixed right-0 -bottom-50 transform-gpu translate-y ease-out duration-400 w-full h-full  bg-gray-900/50 backdrop-blur-sm shadow-lg `,
+    closeMenu: `fixed right-0 -bottom-150 transform-gpu translate-y ease-out duration-400  w-full h-full  bg-gray-900/50 backdrop-blur-sm shadow-lg `,
+}

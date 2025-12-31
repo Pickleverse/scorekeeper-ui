@@ -1,11 +1,9 @@
-'use client';
+'use client'
+
+import { DesktopMenu } from '../../DesktopMenu/DesktopMenu'
 
 const DesktopView = () => {
-    return (
-        <nav>
-            This is the Desktop Menu
-        </nav>
-    )
-};
+    return <DesktopMenu />
+}
 
-export { DesktopView };
+export { DesktopView }

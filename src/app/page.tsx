@@ -6,7 +6,8 @@ const Home = () => {
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
       {/* Features Section */}
-      <Features />
+      {/* <Features /> */}
+      Test
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { FaGoogle, FaGithub } from 'react-icons/fa'
-
+import { Logo } from '../components/Logo'
 export default function LoginPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -15,25 +15,28 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex flex-col">
+        <div className="min-h-screen bg-cream flex flex-col">
             {/* Mobile-first container */}
             <div className="flex-1 flex items-center justify-center px-4 py-8 md:py-12">
                 <div className="w-full max-w-md">
                     {/* Brand/Logo */}
                     <div className="text-center mb-8">
                         <Link href="/">
-                            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                                ScrKpr
-                            </h1>
+                            <div className=" justify-center flex">
+                                <Logo
+                                    href="/"
+                                    imageUrl="/Logos/Scorepal2.png"
+                                />
+                            </div>
                         </Link>
-                        <p className="text-gray-600 text-sm md:text-base">
+                        <p className="text-secondary-green text-sm md:text-base">
                             Welcome back! Sign in to continue
                         </p>
                     </div>
 
                     {/* Login Card */}
-                    <div className="bg-white rounded-lg md:rounded-xl shadow-lg md:shadow-xl border border-gray-100 p-6 md:p-8">
-                        <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
+                    <div className="bg-white rounded-lg md:rounded-xl shadow-lg md:shadow-xl border border-neutral p-6 md:p-8">
+                        <h2 className="text-xl md:text-2xl font-bold text-primary-green mb-6">
                             Sign In
                         </h2>
 
@@ -43,7 +46,7 @@ export default function LoginPage() {
                             <div>
                                 <label
                                     htmlFor="email"
-                                    className="block text-gray-700 font-medium mb-2 text-sm md:text-base"
+                                    className="block text-secondary-green font-medium mb-2 text-sm md:text-base"
                                 >
                                     Email Address
                                 </label>
@@ -52,7 +55,7 @@ export default function LoginPage() {
                                     id="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full px-4 py-3 md:py-3.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm md:text-base transition-all"
+                                    className="w-full px-4 py-3 md:py-3.5 border text-secondary-green border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-teal focus:border-transparent text-sm md:text-base transition-all"
                                     placeholder="you@example.com"
                                     required
                                 />
@@ -62,7 +65,7 @@ export default function LoginPage() {
                             <div>
                                 <label
                                     htmlFor="password"
-                                    className="block text-gray-700 font-medium mb-2 text-sm md:text-base"
+                                    className="block text-secondary-green font-medium mb-2 text-sm md:text-base"
                                 >
                                     Password
                                 </label>
@@ -73,7 +76,7 @@ export default function LoginPage() {
                                     onChange={(e) =>
                                         setPassword(e.target.value)
                                     }
-                                    className="w-full px-4 py-3 md:py-3.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm md:text-base transition-all"
+                                    className="w-full px-4 py-3 md:py-3.5 border border-neutral rounded-lg  text-secondary-green focus:outline-none focus:ring-2 focus:ring-teal focus:border-transparent text-sm md:text-base transition-all"
                                     placeholder="••••••••"
                                     required
                                 />
@@ -89,18 +92,18 @@ export default function LoginPage() {
                                         onChange={(e) =>
                                             setRememberMe(e.target.checked)
                                         }
-                                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-600"
+                                        className="w-4 h-4 text-teal border-neutral rounded focus:ring-teal"
                                     />
                                     <label
                                         htmlFor="remember"
-                                        className="ml-2 text-sm text-gray-700"
+                                        className="ml-2 text-sm text-secondary-green"
                                     >
                                         Remember me
                                     </label>
                                 </div>
                                 <Link
                                     href="/forgot-password"
-                                    className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                                    className="text-sm text-teal hover:text-secondary-green font-medium"
                                 >
                                     Forgot password?
                                 </Link>
@@ -109,25 +112,25 @@ export default function LoginPage() {
                             {/* Submit Button */}
                             <button
                                 type="submit"
-                                className="w-full bg-blue-600 text-white py-3 md:py-3.5 rounded-lg font-semibold text-sm md:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 transition-colors shadow-sm"
+                                className="w-full bg-pickleball-yellow text-primary-green py-3 md:py-3.5 rounded-lg font-semibold text-sm md:text-base hover:bg-gold focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 transition-colors shadow-sm"
                             >
                                 Sign In
                             </button>
                         </form>
                         {/* Divider */}
                         <div className="my-6 flex items-center">
-                            <div className="flex-1 border-t border-gray-200"></div>
-                            <span className="px-4 text-gray-500 text-xs md:text-sm font-medium">
+                            <div className="flex-1 border-t border-neutral"></div>
+                            <span className="px-4 text-neutral text-xs md:text-sm font-medium">
                                 OR
                             </span>
-                            <div className="flex-1 border-t border-gray-200"></div>
+                            <div className="flex-1 border-t border-neutral"></div>
                         </div>
                         {/* Social Login Buttons */}
                         <div className="space-y-3 mb-6">
                             <button
                                 type="button"
                                 onClick={() => console.log('Google login')}
-                                className="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-200 text-gray-700 py-3 md:py-3.5 rounded-lg font-medium hover:bg-gray-50 hover:border-gray-300 transition-all"
+                                className="w-full flex items-center justify-center gap-3 bg-white border-2 border-neutral text-secondary-green py-3 md:py-3.5 rounded-lg font-medium hover:bg-cream hover:border-secondary-green transition-all"
                             >
                                 <FaGoogle className="text-lg text-red-500" />
                                 <span className="text-sm md:text-base">
@@ -138,7 +141,7 @@ export default function LoginPage() {
                             <button
                                 type="button"
                                 onClick={() => console.log('GitHub login')}
-                                className="w-full flex items-center justify-center gap-3 bg-gray-900 text-white py-3 md:py-3.5 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                                className="w-full flex items-center justify-center gap-3 bg-primary-green text-cream py-3 md:py-3.5 rounded-lg font-medium hover:bg-secondary-green transition-colors"
                             >
                                 <FaGithub className="text-lg" />
                                 <span className="text-sm md:text-base">
@@ -148,11 +151,11 @@ export default function LoginPage() {
                         </div>
 
                         {/* Sign Up Link */}
-                        <p className="mt-6 text-center text-gray-600 text-sm">
+                        <p className="mt-6 text-center text-secondary-green text-sm">
                             Don&apos;t have an account?{' '}
                             <Link
                                 href="/signup"
-                                className="text-blue-600 font-semibold hover:text-blue-700"
+                                className="text-teal font-semibold hover:text-secondary-green"
                             >
                                 Sign up
                             </Link>
@@ -163,7 +166,7 @@ export default function LoginPage() {
                     <div className="text-center mt-6">
                         <Link
                             href="/"
-                            className="text-gray-600 hover:text-gray-900 transition-colors text-sm md:text-base inline-flex items-center gap-2"
+                            className="text-secondary-green hover:text-primary-green transition-colors text-sm md:text-base inline-flex items-center gap-2"
                         >
                             <span>←</span>
                             <span>Back to Home</span>

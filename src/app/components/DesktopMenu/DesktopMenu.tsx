@@ -68,13 +68,13 @@ export { DesktopMenu }
 
 const styles = {
     container:
-        'sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm h-full px-4 pt-4 pb-6',
+        'sticky top-0 z-50 bg-cream border-b border-neutral shadow-sm h-full px-4 pt-4 pb-6',
     innerContainer:
         'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16',
-    brand: 'text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors',
+    brand: 'text-2xl font-bold text-primary-green hover:text-teal transition-colors',
     linksContainer: 'hidden md:flex items-center space-x-8',
     navLink:
-        'text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200',
+        'text-secondary-green hover:text-teal font-medium transition-colors duration-200',
     ctaButton:
-        'bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-sm',
+        'bg-pickleball-yellow text-primary-green px-6 py-2 rounded-lg font-semibold hover:bg-gold transition-colors shadow-sm',
 }

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { type DesktopMenuLink, DesktopMenuProps } from './DesktopMenu.d'
+import { Logo } from '../Logo'
 
 const defaultLinks: DesktopMenuLink[] = [
     { label: 'Home', href: '#home' },
@@ -11,8 +12,6 @@ const defaultLinks: DesktopMenuLink[] = [
 ]
 
 const DesktopMenu = ({
-    brandName = 'ScrKpr',
-    brandHref = '/',
     links = defaultLinks,
     className = '',
     linkClassName = '',
@@ -34,9 +33,7 @@ const DesktopMenu = ({
         <nav className={`${styles.container} ${className}`}>
             <div className={styles.innerContainer}>
                 {/* Brand */}
-                <Link href={brandHref} className={styles.brand}>
-                    {brandName}
-                </Link>
+                <Logo href="/" imageUrl="/Logos/Scorepal1.png" />
 
                 {/* Navigation Links */}
                 <div className={styles.linksContainer}>
@@ -70,7 +67,8 @@ const DesktopMenu = ({
 export { DesktopMenu }
 
 const styles = {
-    container: 'sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm',
+    container:
+        'sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm h-full px-4 pt-4 pb-6',
     innerContainer:
         'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16',
     brand: 'text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors',

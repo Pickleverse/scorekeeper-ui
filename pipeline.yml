@@ -24,14 +24,12 @@ environments:
       pipeline: "deploy-dev"
       parameters:
         # key: "value"
-
   - name: develop
     deploy: true
     spinnaker:
       pipeline: "deploy-dev"
       parameters:
         # key: "value"        
-
   - name: master
     deploy: true
     spinnaker:

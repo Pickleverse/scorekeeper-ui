@@ -34,7 +34,7 @@ const MobileMenu = ({
         <div className={`relative ${className}`}>
             <button
                 onClick={toggleMenu}
-                className={`text-gray-700 ${iconClassName}`}
+                className={`text-secondary-green ${iconClassName}`}
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={isOpen}
             >
@@ -65,8 +65,8 @@ const MobileMenu = ({
 export { MobileMenu }
 
 const styles = {
-    menuLink: `block text-white hover:text-blue-400 hover:bg-gray-800 px-4 py-3 rounded-md text-lg font-medium transition-colors`,
+    menuLink: `block text-cream hover:text-pickleball-yellow hover:bg-secondary-green px-4 py-3 rounded-md text-lg font-medium transition-colors`,
     menuContent: `flex flex-col space-y-1 p-4 items-center justify-center`,
-    openMenu: `fixed right-0 -bottom-50 transform-gpu translate-y ease-out duration-400 w-full h-full  bg-gray-900/50 backdrop-blur-sm shadow-lg `,
-    closeMenu: `fixed right-0 -bottom-150 transform-gpu translate-y ease-out duration-400  w-full h-full  bg-gray-900/50 backdrop-blur-sm shadow-lg `,
+    openMenu: `fixed right-0 bottom-0 transform-gpu translate-y ease-out duration-400 w-full h-50vh  bg-primary-green/95 backdrop-blur-sm shadow-lg `,
+    closeMenu: `fixed right-0 -bottom-2000 transform-gpu translate-y ease-in duration-500  w-full h-50vh  bg-primary-green/95 backdrop-blur-sm shadow-lg `,
 }

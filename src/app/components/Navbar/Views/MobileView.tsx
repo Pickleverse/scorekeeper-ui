@@ -1,24 +1,25 @@
-'use client';
-import { MobileMenu } from "../../MobileMenu/MobileMenu";
+'use client'
+import { MobileMenu } from '../../MobileMenu/MobileMenu'
+import { Logo } from '../../Logo'
 
 const MobileView = () => {
     return (
         <nav className={`${styles.position} ${styles.borders}`}>
             <div className={`${styles.contentAlignment}`}>
                 <div className={`${styles.brandFont}`}>
-                    ScrKpr
+                    <Logo href="/" imageUrl="/Logos/Scorepal1.png" />
                 </div>
-                <MobileMenu/>
+                <MobileMenu />
             </div>
         </nav>
     )
-};
+}
 
-export { MobileView };
+export { MobileView }
 
-    const styles = {
-        position: "relative top-0 z-50 sticky bg-white",
-        contentAlignment: "flex justify-between items-center px-3 py-1",
-        borders: "",
-        brandFont: "text-3xl font-bold text-gray-700",
-    };
+const styles = {
+    position: 'relative top-0 z-50 sticky bg-white',
+    contentAlignment: 'flex justify-between items-center px-3 pt-3 pb-6',
+    borders: '',
+    brandFont: 'w-full',
+}

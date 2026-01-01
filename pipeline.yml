@@ -13,7 +13,7 @@ artifacts:
 
 custom:  
   post_build_commands:
-    - sh 'env | sort'
+    - 'env | sort'
     - "tar -czf scorepal-ui-svc-$BRANCH_NAME.archive.tar.gz out/"
 
 

@@ -5,10 +5,10 @@ import { type DesktopMenuLink, DesktopMenuProps } from './DesktopMenu.d'
 import { Logo } from '../Logo'
 
 const defaultLinks: DesktopMenuLink[] = [
-    { label: 'Home', href: '#home' },
-    { label: 'Features', href: '#features' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: '/' },
+    { label: 'Features', href: '/' },
+    { label: 'About', href: '/' },
+    { label: 'Contact', href: '/' },
 ]
 
 const DesktopMenu = ({

@@ -21,14 +21,12 @@ export default function LoginPage() {
                 <div className="w-full max-w-md">
                     {/* Brand/Logo */}
                     <div className="text-center mb-8">
-                        <Link href="/">
-                            <div className=" justify-center flex">
-                                <Logo
-                                    href="/"
-                                    imageUrl="/Logos/Scorepal2.png"
-                                />
-                            </div>
-                        </Link>
+                        <div className="justify-center flex">
+                            <Logo
+                                href="/"
+                                imageUrl="/Logos/Scorepal2.png"
+                            />
+                        </div>
                         <p className="text-secondary-green text-sm md:text-base">
                             Welcome back! Sign in to continue
                         </p>

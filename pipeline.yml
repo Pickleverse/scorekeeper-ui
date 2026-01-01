@@ -14,7 +14,7 @@ artifacts:
 custom:  
   post_build_commands:
     - 'env | sort'
-    - "tar -czf scorepal-ui-svc-$BRANCH_NAME.archive.tar.gz out/"
+    - "tar -czf scorepal-ui-svc-$JOB_BASE_NAME-$BUILD_NUMBER.archive.tar.gz out/"
 
 
 spinnaker_app: scorepal-ui-svc

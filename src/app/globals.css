@@ -1,72 +1,89 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* WCAG-Compliant Pickleball Color Palette */
 :root {
-  /* Core Brand Colors */
-  --color-brand-primary: #1B3527;
-  --color-brand-secondary: #2A5740;
-  --color-brand-yellow: #E6B93A;
-  --color-brand-cream: #F4EFE5;
-  --color-brand-olive: #232A25;
+    /* Core Brand Colors */
+    --color-brand-primary: #1b3527;
+    --color-brand-secondary: #2a5740;
+    --color-brand-yellow: #e6b93a;
+    --color-brand-cream: #f4efe5;
+    --color-brand-olive: #232a25;
 
-  /* Accent Colors */
-  --color-accent-orange: #C8641F;
-  --color-accent-teal: #3F8E90;
-  --color-accent-gold: #B8961F;
+    /* Accent Colors */
+    --color-accent-orange: #c8641f;
+    --color-accent-teal: #3f8e90;
+    --color-accent-gold: #b8961f;
 
-  /* Neutral */
-  --color-neutral: #8E8E8E;
+    /* Neutral */
+    --color-neutral: #8e8e8e;
 
-  /* Light Theme */
-  --background: #F4EFE5;
-  --foreground: #1B3527;
-  --text-secondary: #2A5740;
-  --border: #8E8E8E;
+    /* Light Theme */
+    --background: #f4efe5;
+    --foreground: #1b3527;
+    --text-secondary: #2a5740;
+    --border: #8e8e8e;
 
-  /* Dark Theme Base */
-  --dark-background: #1C1F1D;
-  --dark-card: #232A25;
-  --dark-foreground: #F4EFE5;
-  --dark-text-secondary: #C9D2C6;
+    /* Dark Theme Base */
+    --dark-background: #1c1f1d;
+    --dark-card: #232a25;
+    --dark-foreground: #f4efe5;
+    --dark-text-secondary: #c9d2c6;
 }
 
 @theme inline {
-  /* Brand Colors */
-  --color-primary-green: var(--color-brand-primary);
-  --color-secondary-green: var(--color-brand-secondary);
-  --color-pickleball-yellow: var(--color-brand-yellow);
-  --color-cream: var(--color-brand-cream);
-  --color-olive: var(--color-brand-olive);
+    /* Brand Colors */
+    --color-primary-green: var(--color-brand-primary);
+    --color-secondary-green: var(--color-brand-secondary);
+    --color-pickleball-yellow: var(--color-brand-yellow);
+    --color-cream: var(--color-brand-cream);
+    --color-olive: var(--color-brand-olive);
 
-  /* Accent Colors */
-  --color-burnt-orange: var(--color-accent-orange);
-  --color-teal: var(--color-accent-teal);
-  --color-gold: var(--color-accent-gold);
+    /* Accent Colors */
+    --color-burnt-orange: var(--color-accent-orange);
+    --color-teal: var(--color-accent-teal);
+    --color-gold: var(--color-accent-gold);
 
-  /* Semantic Colors */
-  --color-win: var(--color-accent-gold);
-  --color-loss: var(--color-accent-orange);
-  --color-active: var(--color-accent-teal);
-  --color-neutral: var(--color-neutral);
+    /* Semantic Colors */
+    --color-win: var(--color-accent-gold);
+    --color-loss: var(--color-accent-orange);
+    --color-active: var(--color-accent-teal);
+    --color-neutral: var(--color-neutral);
 
-  /* Theme Colors */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-text-secondary: var(--text-secondary);
-  --color-border: var(--border);
+    /* Theme Colors */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-text-secondary: var(--text-secondary);
+    --color-border: var(--border);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--dark-background);
-    --foreground: var(--dark-foreground);
-    --text-secondary: var(--dark-text-secondary);
-    --border: var(--color-neutral);
-  }
+    :root {
+        --background: var(--dark-background);
+        --foreground: var(--dark-foreground);
+        --text-secondary: var(--dark-text-secondary);
+        --border: var(--color-neutral);
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* app/globals.css (add this) */
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s ease-out;
 }
